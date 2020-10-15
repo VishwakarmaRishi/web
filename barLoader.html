@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="A simple bar loading animation" />
+        <title>Bar Loading Animation</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #000000e3;
+            }
+            #wrapper {
+                position: absolute;
+                width: 50%;
+                height: 6%;
+                left: 24%;
+                top: 47%;
+                border: 5px solid green;
+                background-color: #141414f1;
+            }
+            #bar {
+                position: relative;
+                width: 0%;
+                height: 102%;
+                background-color: yellow;
+                border-width: 0;
+            }
+            #footer {
+                position: absolute;
+                width: 50%;
+                height: 6%;
+                left: 24%;
+                top: 58%;
+            }
+            #start {
+                margin-top: 100px;
+                color: #ffffff;
+                background-color: transparent;
+                text-decoration: none;
+                outline: none;
+                border: 2px double #fff;
+                border-radius: 4px;
+                padding: 1.5% 3%;
+                font-size: x-large;
+            }
+            #percent {
+                position: absolute;
+                right: 0%;
+                color: #ffffff;
+                font-size: x-large;
+            }
+            #alert {
+                position: absolute;
+                text-align: center;
+                justify-content: center;
+                padding: 10% 0%;
+                height: 17%;
+                width: 33%;
+                top: 33%;
+                left: 33%;
+                background-color: #9c102c;
+                color: #fff;
+                font-size: xx-large;
+                font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+                border: 3px solid #fff;
+                border-radius: 5%;
+                display: none;
+            }
+            #close {
+                padding: 4px;
+                position: absolute;
+                top: 81%;
+                left: 74%;
+                font-size: medium;
+                font-weight: bold;
+                border: 5px double #ddd;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="bar"></div>
+        </div>
+        <div id="footer">
+            <span id="start" onclick="start()">Start!</span>
+            <span id="percent">0%</span>
+        </div>
+        <div id="alert">
+            Completed!!!
+            <span id="close" onclick="exit()">Close</span>
+        </div>
+        <script>
+            var bar = document.getElementById("bar").style;
+            var label = document.getElementById("percent");
+            var alertBox = document.getElementById("alert");
+
+            function start() {
+                for (let width = 0; width <= 100; width++) {
+                    setTimeout(() => {
+                        label.innerText = bar.width = `${width}%`;
+                    }, 150 * width);
+                }
+                setTimeout(() => {
+                    alertBox.style.display = "block";
+                }, 15100);
+            }
+            function exit() {
+                alertBox.style.display = "none";
+                bar.width = label.innerText = "0%";
+            }
+        </script>
+    </body>
+</html>
